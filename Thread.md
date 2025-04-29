@@ -1,9 +1,3 @@
----
-layout: post
-title: '3.2 Commands'
-parent: '3. Threads'
----
-
 # 🧠 1,What is a Thread?
 
 - A thread is a small "program" running inside a bigger program (the application).
