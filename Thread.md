@@ -37,8 +37,7 @@ Each thread needs:
 **<p style="font-size: 18px;">Example 1: Create with ```k_thread_create```</p>**
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 // Stack memory for the thread
 K_THREAD_STACK_DEFINE(my_stack_area, 1024);
@@ -77,8 +76,7 @@ void main(void)
 **<p style="font-size: 18px;">Example 2: Create with ```K_THREAD_DEFINE``` (easier!)</p>**
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 void my_thread_fn(void *arg1, void *arg2, void *arg3)
 {
@@ -158,8 +156,7 @@ Thread1 (priority 2) runs before Thread2.
 # 🧰 7. Complete Example with Suspend, Resume, and Abort
 
 ```c 
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 K_THREAD_STACK_DEFINE(my_stack_area, 1024);
 struct k_thread my_thread_data;
@@ -228,8 +225,7 @@ But if you want a thread to "voluntarily" give up the CPU to let others run even
 **<p style="font-size: 18px;">Example:</p>**
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 K_THREAD_STACK_DEFINE(thread1_stack, 1024);
 K_THREAD_STACK_DEFINE(thread2_stack, 1024);
@@ -280,8 +276,7 @@ Simple (but risky!) way is using a global variable.
 **<p style="font-size: 18px;">Example: Counter shared between two threads</p>**
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 K_THREAD_STACK_DEFINE(producer_stack, 1024);
 K_THREAD_STACK_DEFINE(consumer_stack, 1024);
@@ -345,8 +340,7 @@ In Zephyr, the main synchronization tools are:
 ## 11.1 Mutex Example (protect shared variable)
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 K_THREAD_STACK_DEFINE(producer_stack, 1024);
 K_THREAD_STACK_DEFINE(consumer_stack, 1024);
@@ -406,8 +400,7 @@ Semaphore = a counter for signaling.
 Imagine: "Producer tells Consumer that something is ready".
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 K_THREAD_STACK_DEFINE(producer_stack, 1024);
 K_THREAD_STACK_DEFINE(consumer_stack, 1024);
@@ -465,8 +458,7 @@ void main(void)
 Imagine a producer sending numbers to a consumer.
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 #define MSGQ_MAX_MSGS 5
 #define MSGQ_MSG_SIZE sizeof(int)
@@ -644,8 +636,7 @@ k_poll(my_events, 2, K_FOREVER); // Wait for any of sem1 or sem2
 🔥 Full Example:
 
 ```c
-#include <zephyr.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
 
 #define MSGQ_MAX_MSGS 5
 #define MSGQ_MSG_SIZE sizeof(int)
